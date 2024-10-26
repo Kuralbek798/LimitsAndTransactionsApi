@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Core;
+using LimitsAndTransactionsApi.Repositories.ExchangeRateRepository;
 using LimitsAndTransactionsApi.Services;
 using Quartz.Impl.AdoJobStore;
 
@@ -14,7 +15,9 @@ namespace LimitsAndTransactionsApi
             // builder.RegisterType<MyService>().As<IMyService>().InstancePerLifetimeScope(); // Scoped, по умолчанию
             // builder.RegisterType<MyService>().As<IMyService>().SingleInstance(); // Singleton
 
-            builder.RegisterType<MyService>().As<IMyService>(); // Это будет использовать жизненный цикл .NET Core
+            builder.RegisterType<ExchangeRateService>().As<IExchangeRateService>(); // Это будет использовать жизненный цикл .NET Core
+            builder.RegisterType<ExchangeRateRepository>().As<IExchangeRateRepository>();
+            
         }
     }
 }

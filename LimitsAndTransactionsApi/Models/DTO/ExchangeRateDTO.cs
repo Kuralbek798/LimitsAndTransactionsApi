@@ -21,7 +21,7 @@ namespace LimitsAndTransactionsApi.Models.DTO
             Close = close;
             DateTimeRate = dateTimeRate;
         }
-
+        public ExchangeRateDTO() { }
         // Переопределяем метод GetHashCode
         public override int GetHashCode()
         {
