@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LimitsAndTransactionsApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241026144029_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241027101901_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,45 @@ namespace LimitsAndTransactionsApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LimitsAndTransactionsApi.Models.Entity.ApiKey", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit")
+                        .HasColumnName("active");
+
+                    b.Property<DateTimeOffset>("CreatedTime")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("created_time");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("description");
+
+                    b.Property<string>("EncryptedApiKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("encrypted_api_path");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("api_key");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d05eca88-8ddb-4576-b2a8-7415f358364a"),
+                            Active = true,
+                            CreatedTime = new DateTimeOffset(new DateTime(2024, 10, 27, 10, 19, 1, 124, DateTimeKind.Unspecified).AddTicks(9356), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "twelve",
+                            EncryptedApiPath = "F5z8tDG0AI0Xon4zLcuLZsXXPAbiMkYDQJHBzYUOLXGHRFDqq4AWvWxil+mRt0+w"
+                        });
+                });
 
             modelBuilder.Entity("LimitsAndTransactionsApi.Models.Entity.ExchangeRate", b =>
                 {
@@ -50,7 +89,7 @@ namespace LimitsAndTransactionsApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("exchange_rates", (string)null);
+                    b.ToTable("exchange_rates");
                 });
 #pragma warning restore 612, 618
         }

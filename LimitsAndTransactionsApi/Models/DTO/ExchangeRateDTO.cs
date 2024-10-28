@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Text.Json.Serialization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Text.Json.Serialization;
 
 namespace LimitsAndTransactionsApi.Models.DTO
 {
@@ -23,7 +20,7 @@ namespace LimitsAndTransactionsApi.Models.DTO
         }
         public ExchangeRateDTO() { }
         // Переопределяем метод GetHashCode
-        public override int GetHashCode()
+     /*   public override int GetHashCode()
         {
             const int PRIME = 31;
             int result = 1;
@@ -31,11 +28,11 @@ namespace LimitsAndTransactionsApi.Models.DTO
             result = PRIME * result + Rate.GetHashCode();
             result = PRIME * result + Close.GetHashCode();
             result = PRIME * result + DateTimeRate.GetHashCode();
-            
+
 
             return result;
-        }
-        
+        }*/
+
         // Переопределяем Equals
         public override bool Equals(object obj)
         {
@@ -44,6 +41,11 @@ namespace LimitsAndTransactionsApi.Models.DTO
                    Rate == other.Rate &&
                    Close == other.Close &&
                    DateTimeRate == other.DateTimeRate;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(CurrencyPair, Rate, Close, DateTimeRate,31);
         }
     }
 }

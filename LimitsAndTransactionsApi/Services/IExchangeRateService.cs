@@ -4,6 +4,6 @@ namespace LimitsAndTransactionsApi.Services
 {
     public interface IExchangeRateService
     {
-          Task<ExchangeRateDTO> GetCurrencyRate(string currencyPair);
+        Task<ExchangeRateDTO> GetCurrencyRate(string currencyPair);
     }
 }

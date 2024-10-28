@@ -5,22 +5,22 @@ namespace LimitsAndTransactionsApi.Models.Entity
 {
     [Table("exchange_rates")]
     public class ExchangeRate
-    {   
+    {
 
         [Key]
         public Guid Id { get; set; }
 
         [Column("currency_pair")]
         [Required]
-        public string CurrencyPair {  get; set; }
+        public string CurrencyPair { get; set; }
 
         [Column("rate")]
         [Required]
         public decimal Rate { get; set; }
-        
+
         [Column("close")]
         [Required]
-        public decimal Close {  get; set; }
+        public decimal Close { get; set; }
 
         [Column("datetime_rate")]
         [Required]
@@ -34,7 +34,10 @@ namespace LimitsAndTransactionsApi.Models.Entity
             Close = close;
             DateTimeRate = dateTimeRate;
         }
-        public ExchangeRate() { }
+        public ExchangeRate()
+        {
+            Id = Guid.NewGuid();
+        }
 
         public override string ToString()
         {

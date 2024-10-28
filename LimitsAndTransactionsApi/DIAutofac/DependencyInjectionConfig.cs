@@ -1,8 +1,8 @@
 ﻿using Autofac;
-using Autofac.Core;
+using LimitsAndTransactionsApi.Repositories.ApiKeyRepository;
 using LimitsAndTransactionsApi.Repositories.ExchangeRateRepository;
 using LimitsAndTransactionsApi.Services;
-using Quartz.Impl.AdoJobStore;
+using LimitsAndTransactionsApi.Utils;
 
 namespace LimitsAndTransactionsApi
 {
@@ -17,7 +17,10 @@ namespace LimitsAndTransactionsApi
 
             builder.RegisterType<ExchangeRateService>().As<IExchangeRateService>(); // Это будет использовать жизненный цикл .NET Core
             builder.RegisterType<ExchangeRateRepository>().As<IExchangeRateRepository>();
-            
+            builder.RegisterType<ApiKeyRepository>().As<IApiKeyRepository>();
+            builder.RegisterType<EncryptionDecryptionUtil>().As<IEncryptionDecryptionUtil>();
+          
+
         }
     }
 }

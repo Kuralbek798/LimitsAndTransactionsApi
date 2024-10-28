@@ -4,7 +4,7 @@ namespace LimitsAndTransactionsApi.Utils
 {
     public static class Logger
     {
-       static string logPath = "D:\\logs/myapp.txt";
+        static string logPath = "D:\\logs/myapp.txt";
         public static void ConfigureLogger()
         {
             Log.Logger = new LoggerConfiguration()
@@ -25,10 +25,10 @@ namespace LimitsAndTransactionsApi.Utils
         }
 
         public static void Warn(string message)
-        {           
+        {
             Log.Warning(message);
         }
 
-      
+
     }
 }

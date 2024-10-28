@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using LimitsAndTransactionsApi.Context;
-using LimitsAndTransactionsApi.Mapper;
 using LimitsAndTransactionsApi.Models.DTO;
 using LimitsAndTransactionsApi.Utils;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +30,8 @@ namespace LimitsAndTransactionsApi.Repositories.ExchangeRateRepository
                 {
                     return _mapper.Map<ExchangeRateDTO>(rate);
                 }
-                else {
+                else
+                {
                     Logger.Warn("No data found");
                     return null;
                 }

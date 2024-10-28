@@ -3,11 +3,8 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using LimitsAndTransactionsApi.Context;
 using LimitsAndTransactionsApi.Mapper;
-using LimitsAndTransactionsApi.Utils;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
 
 namespace LimitsAndTransactionsApi
 {
@@ -65,14 +62,15 @@ namespace LimitsAndTransactionsApi
                 Log.Fatal(e, e.Message);
                 throw new Exception(e.Message);
             }
-            finally { 
-            Log.CloseAndFlush();
+            finally
+            {
+                Log.CloseAndFlush();
             }
 
-   
 
-            
+
+
         }
     }
-    
+
 }
